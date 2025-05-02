@@ -6,22 +6,6 @@ class TreeNode:
         self.left = None    # 👈 Left child reference
         self.right = None   # 👉 Right child reference
 
-def create_sample_tree():
-    """Create a sample binary tree for testing."""
-    # Create tree structure:
-    #      1
-    #     / \
-    #    2   3
-    #   / \   \
-    #  4   5   6
-    root = TreeNode(1)
-    root.left = TreeNode(2)
-    root.right = TreeNode(3)
-    root.left.left = TreeNode(4)
-    root.left.right = TreeNode(5)
-    root.right.right = TreeNode(6)
-    return root
-
 def is_balanced(root):
     """Check if a binary tree is balanced (height difference between subtrees ≤ 1)."""
 
