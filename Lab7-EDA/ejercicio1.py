@@ -6,21 +6,6 @@ class TreeNode:
         self.left = None    # 👈 Left child reference
         self.right = None   # 👉 Right child reference
 
-def create_sample_tree():
-    """Create a sample binary tree for testing."""
-    # Create tree structure:
-    #      1
-    #     / \
-    #    2   3
-    #   / \   \
-    #  4   5   6
-    root = TreeNode(1)
-    root.left = TreeNode(2)
-    root.right = TreeNode(3)
-    root.left.left = TreeNode(4)
-    root.left.right = TreeNode(5)
-    root.right.right = TreeNode(6)
-    return root
 
 def tree_height(root):
     """Calculate the height of a binary tree."""
@@ -34,8 +19,7 @@ def tree_height(root):
 
     # Height is the maximum of left and right subtree heights, plus 1
     return max(left_height, right_height) + 1
-
-
+    
 def test_tree_height():
     # Test Case 1: Normal tree
     root = TreeNode(1)
