@@ -1,0 +1,89 @@
+class Node:
+    def __init__(self,value):
+        self.value=value
+        self.left=None
+        self.right=None
+class ExpressionTree:
+    """🌳 Expression tree with build and traversal placeholders."""
+    def __init__(self):
+        self.root = None
+
+    def build_from_postfix(self, postfix_tokens):
+        """🔨 Build tree from postfix tokens."""
+        stack = []
+        ops = {"+", "-", "*", "/"}
+        for tok in postfix_tokens:
+            node = Node(tok)
+            if tok in ops:
+                node.right = stack.pop()
+                node.left = stack.pop()
+            stack.append(node)
+        self.root = stack.pop() if stack else None
+
+    def inorder(self, node=None, result=None):
+        """📝 Inorder traversal (left, root, right) with parentheses."""
+        # Your solution here 🛠
+        
+
+
+    def preorder(self, node=None, result=None):
+        """🚀 Preorder traversal (root, left, right) to generate prefix tokens."""
+        # Your solution here 🛠
+        
+
+    def postorder(self, node=None, result=None):
+        """🧠 Postorder traversal (left, right, root) to generate postfix tokens."""
+        # Your solution here 🛠
+        
+
+# Helper to build for tests
+def build_tree(postfix):
+    stack = []
+    ops = {"+", "-", "*", "/"}
+    for tok in postfix:
+        node = Node(tok)
+        if tok in ops:
+            node.right = stack.pop()
+            node.left = stack.pop()
+        stack.append(node)
+    return stack.pop() if stack else None
+
+# 🧪 Test cases
+def test_traversals():
+    tree = ExpressionTree()
+    tree.build_from_postfix(["2","3","+","4","1","-","*"])
+    # Inorder
+    infix = tree.inorder()
+    print("📝 Test 1 (Infix):", "".join(infix) == "((2+3)*(4-1))")
+    # Preorder
+    prefix = tree.preorder()
+    print("🚀 Test 1 (Prefix):", " ".join(prefix) == "* + 2 3 - 4 1")
+    # Postorder
+    postfix = tree.postorder()
+    print("🧠 Test 1 (Postfix):", " ".join(postfix) == "2 3 + 4 1 - *")
+    # Single node "X"
+    single = ExpressionTree()
+    single.root = Node("X")
+    print("🌱 Test 2 (Infix):", single.inorder() == ["X"])
+    print("🌱 Test 2 (Prefix):", single.preorder() == ["X"])
+    print("🌱 Test 2 (Postfix):", single.postorder() == ["X"])
+    # Empty tree
+    empty = ExpressionTree()
+    print("📭 Test 3 (Infix):", empty.inorder() == [])
+    print("📭 Test 3 (Prefix):", empty.preorder() == [])
+    print("📭 Test 3 (Postfix):", empty.postorder() == [])
+    # Mixed operators (1*(2+3))
+    tree2 = ExpressionTree()
+    tree2.build_from_postfix(["1","2","3","+","*"])
+    print("🔄 Test 4 (Infix):", "".join(tree2.inorder()) == "(1*(2+3))")
+    print("🔄 Test 4 (Prefix):", " ".join(tree2.preorder()) == "* 1 + 2 3")
+    print("🔄 Test 4 (Postfix):", " ".join(tree2.postorder()) == "1 2 3 + *")
+    # Variables (a+(b*c))
+    tree3 = ExpressionTree()
+    tree3.build_from_postfix(["a","b","c","*","+"])
+    print("🔤 Test 5 (Infix):", "".join(tree3.inorder()) == "(a+(b*c))")
+    print("🔤 Test 5 (Prefix):", " ".join(tree3.preorder()) == "+ a * b c")
+    print("🔤 Test 5 (Postfix):", " ".join(tree3.postorder()) == "a b c * +")
+
+# 🚀 Run tests
+test_traversals()
